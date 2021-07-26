@@ -7,6 +7,11 @@ var score = 0;
 var life = 3;
 var bullets = 70;
 
+var PLAY=1;
+var END=0;
+var gameState=PLAY;
+
+
 
 function preload(){
   
@@ -45,8 +50,9 @@ function draw() {
   background(0); 
 
 
+if(gameState===PLAY){
 
-
+  
   //moving the player up and down and making the game mobile compatible using touches
 if(keyDown("UP_ARROW")||touches.length>0){
   player.y = player.y-30
@@ -106,6 +112,21 @@ if(zombieGroup.isTouching(player)){
     
   }
 
+}
+}
+
+if(life===0){
+  gameState=END;
+
+   background("black")
+  
+  
+  stroke("white");
+  textSize(20);
+  fill("whitw");
+  text("GAME OVER",windowWidth,windowHeight);
+
+  
 }
 
 
